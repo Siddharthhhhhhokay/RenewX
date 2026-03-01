@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenewX - The Collective Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="overflow-x-hidden custom-scrollbar">
+    <!-- Fixed Navigation -->
+    <nav class="flex items-center justify-between px-6 md:px-12 py-8 fixed top-0 w-full z-50">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center group">
+            <button class="uiverse">
+                <div class="wrapper">
+                    <span>R</span>
+                    <div class="circle circle-12"></div>
+                    <div class="circle circle-11"></div>
+                    <div class="circle circle-10"></div>
+                    <div class="circle circle-9"></div>
+                    <div class="circle circle-8"></div>
+                    <div class="circle circle-7"></div>
+                    <div class="circle circle-6"></div>
+                    <div class="circle circle-5"></div>
+                    <div class="circle circle-4"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-1"></div>
+                </div>
+            </button>
+        </a>
+
+        <!-- Central Pill Nav -->
+        <div class="hidden md:flex items-center space-x-8 nav-pill-container">
+            <a href="#home"
+                class="text-sm font-bold tracking-tight text-white/90 hover:text-white transition-colors">Home</a>
+            <a href="#about"
+                class="text-sm font-bold tracking-tight text-white/50 hover:text-white transition-colors">About us</a>
+            <a href="#vision"
+                class="text-sm font-bold tracking-tight text-white/50 hover:text-white transition-colors">Vision</a>
+        </div>
+
+        <!-- Right CTA Pill -->
+        <div>
+            <a href="#login" class="nav-button-wrapper">
+                <button class="nav-button-inner">
+                    Choose Your Path &or;
+                </button>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Section 1: HOME (Chapter I) -->
+        <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden bg-black">
+            <!-- Animated Sun System -->
+            <div class="sun-system" id="sunSystem">
+                <div class="sun-rays"></div>
+                <div class="sun-corona"></div>
+                <div class="sun-core"></div>
+            </div>
+
+            <!-- Dark centering vignette -->
+            <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+            <div class="relative z-10 text-center px-6 animate-entrance">
+                <h1
+                    class="text-6xl md:text-[140px] font-black leading-[0.8] mb-8 animate-entrance text-hero-gradient letter-spacing-tighter heading-glow">
+                    RenewX.
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 font-medium tracking-wide max-w-2xl mx-auto">
+                    The future of clean energy. Built for everyone.
+                </p>
+
+                <div class="mt-12 flex justify-center">
+                    <a href="#about" class="animate-bounce">
+                        <svg class="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: ABOUT (Chapter II) -->
+        <section id="about" class="min-h-screen py-32 px-6 md:px-12 relative overflow-hidden flex items-center">
+            <!-- Background Video -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="assets/tensorpix_bg.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay for Readability -->
+            <div class="absolute inset-0 bg-slate-900/60"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-24 scroll-reveal">
+                    <p class="text-amber-400 font-black uppercase tracking-[0.3em] mb-4">Chapter II: The Narrative</p>
+                    <h2
+                        class="text-6xl md:text-8xl font-black tracking-tight leading-[0.9] mb-8 text-premium-orange letter-spacing-tight">
+                        THE COLLECTIVE STORY.
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-24 items-center">
+                    <div class="scroll-reveal">
+                        <h3 class="text-4xl font-black text-white mb-8 tracking-tight">The Origin Story</h3>
+                        <p class="text-xl text-amber-100/80 font-bold leading-relaxed mb-8">
+                            We saw a future where every building is a generator. We built a marketplace that treats
+                            energy like the community asset it truly is.
+                        </p>
+                        <div class="p-8 glass-premium rounded-3xl border-l-4 bg-white/5" style="border-color: #FB923C;">
+                            <p class="font-black leading-relaxed italic" style="color: #FEF08A;">"A thousand tiny suns
+                                are
+                                better than one giant factory."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision"
+            class="min-h-screen py-40 px-6 md:px-12 text-white relative overflow-hidden flex items-center bg-slate-950">
+            <!-- Background glow -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-amber-900/20 pointer-events-none">
+            </div>
+
+            <!-- Uiverse Stars -->
+            <div id="star-1" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-2" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-3" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-4" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-5" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-6" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+            <div id="star-7" class="curved-corner-star">
+                <div class="star-part topleft"></div>
+                <div class="star-part topright"></div>
+                <div class="star-part bottomleft"></div>
+                <div class="star-part bottomright"></div>
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <p class="font-black uppercase tracking-[0.4em] mb-8" style="color: #FB923C;">Chapter III: The Spark</p>
+                <h2
+                    class="text-6xl md:text-[120px] font-black mb-12 leading-[0.85] italic text-hero-gradient letter-spacing-tighter">
+                    A New <span class="text-amber-500">World</span>.
+                </h2>
+                <div class="space-y-12 text-2xl md:text-4xl font-extrabold max-w-4xl mx-auto leading-tight italic"
+                    style="color: #FECBA1;">
+                    <p>"Imagine a world where your neighbor’s solar panels power your morning coffee."</p>
+                    <p class="opacity-60">"Where transparency replaces hidden fees."</p>
+                    <p class="opacity-30">"Where every kilowatt is a vote for the planet."</p>
+                </div>
+            </div>
+
+            <!-- The Rotating Zooming Earth -->
+            <div id="visionEarth" class="section-banner"></div>
+        </section>
+
+        <!-- Section 4: LOGIN (Chapter IV) -->
+        <section id="login"
+            class="min-h-screen py-32 px-6 md:px-12 bg-slate-900 flex items-center justify-center relative overflow-hidden">
+            <!-- [DECORATIVE ELEMENTS] -->
+            <div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-amber-500/10 blur-[100px] rounded-full"></div>
+
+            <div class="max-w-xl w-full scroll-reveal">
+                <div class="text-center mb-12">
+                    <p class="text-amber-500 font-black uppercase tracking-widest mb-4">Chapter IV: The Portal</p>
+                    <h2 class="text-5xl font-black tracking-tight text-premium-orange letter-spacing-tight">
+                        Enter the <span class="text-amber-500">Grid</span>.</h2>
+                </div>
+
+                <div class="max-w-md mx-auto form-container">
+                    <form id="loginForm" class="form">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Passkey</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Select Role</label>
+                            <select id="role" class="bg-slate-900 border-slate-700">
+                                <option value="producer">Producer</option>
+                                <option value="consumer">Consumer</option>
+                                <option value="investor">Investor</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="form-submit-btn">Login to the Movement &rarr;</button>
+                    </form>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-slate-400 font-bold italic">New to the story? <a href="#signup"
+                            class="font-black transition-colors hover:underline" style="color: #FB923C;">Join the
+                            Revolution</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: SIGNUP (Chapter V) -->
+        <section id="signup" class="min-h-screen py-32 px-6 md:px-12 glass-premium border-t border-white/20">
+            <div class="max-w-4xl mx-auto scroll-reveal">
+                <div class="text-center mb-16">
+                    <p class="font-black uppercase tracking-widest mb-4" style="color: #FB923C;">Chapter V: The
+                        Invitation</p>
+                    <h2 class="text-6xl font-black text-white tracking-tight leading-none mb-6">Write Your <span
+                            class="italic" style="color: #FEF08A;">Record</span>.</h2>
+                    <p class="text-xl text-slate-400 font-bold">Join the movement and start your storytelling journey
+                        today.</p>
+                </div>
+
+                <div class="max-w-2xl mx-auto form-container">
+                    <form id="signupForm" class="form">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" id="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Create Passkey</label>
+                            <input type="password" id="signupPassword" placeholder="••••••••" required>
+                        </div>
+
+                        <p class="text-center text-xs font-black uppercase tracking-widest text-slate-500 mt-4">Select
+                            Your Role</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="roleSelector">
+                            <div data-role="producer"
+                                class="role-card p-4 rounded-2xl border-2 border-orange-500 bg-orange-500/10 flex flex-col items-center cursor-pointer transition-all">
+                                <p class="font-black text-white text-sm">Producer</p>
+                                <p class="status-label text-[8px] font-black text-orange-400 uppercase">Selected</p>
+                            </div>
+                            <div data-role="consumer"
+                                class="role-card p-4 rounded-2xl border border-white/10 bg-white/5 opacity-60 flex flex-col items-center cursor-pointer transition-all">
+                                <p class="font-black text-white text-sm">Consumer</p>
+                                <p class="status-label text-[8px] font-black text-slate-500 uppercase">Available</p>
+                            </div>
+                            <div data-role="investor"
+                                class="role-card p-4 rounded-2xl border border-white/10 bg-white/5 opacity-60 flex flex-col items-center cursor-pointer transition-all">
+                                <p class="font-black text-white text-sm">Investor</p>
+                                <p class="status-label text-[8px] font-black text-slate-500 uppercase">Available</p>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="selectedRole" value="producer">
+
+                        <button type="submit" class="form-submit-btn mt-4">Sign the Manifest &rarr;</button>
+                    </form>
+                </div>
+                <script>
+                    // Role selection logic
+                    const cards = document.querySelectorAll('.role-card');
+                    const hiddenInput = document.getElementById('selectedRole');
+
+                    cards.forEach(card => {
+                        card.addEventListener('click', () => {
+                            // Reset all cards
+                            cards.forEach(c => {
+                                c.classList.remove('border-orange-500', 'bg-orange-500/10');
+                                c.classList.add('border-white/10', 'bg-white/5', 'opacity-60');
+                                c.querySelector('.status-label').innerText = 'Available';
+                                c.querySelector('.status-label').className = 'status-label text-[8px] font-black text-slate-500 uppercase';
+                            });
+
+                            // Activate clicked card
+                            card.classList.remove('border-white/10', 'bg-white/5', 'opacity-60');
+                            card.classList.add('border-orange-500', 'bg-orange-500/10');
+                            card.querySelector('.status-label').innerText = 'Selected';
+                            card.querySelector('.status-label').className = 'status-label text-[8px] font-black text-orange-400 uppercase';
+
+                            hiddenInput.value = card.dataset.role;
+                        });
+                    });
+                </script>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer class="bg-slate-900 text-white pt-32 pb-16 px-6 md:px-12 text-center overflow-hidden relative">
+        <!-- Firefly Video Background -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="assets/footer_firefly.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay for readability -->
+        <div class="absolute inset-0 bg-slate-900/60"></div>
+
+        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-500 via-blue-500 to-purple-500 z-20"></div>
+
+        <div class="max-w-4xl mx-auto scroll-reveal relative z-10">
+            <a href="#home" class="inline-flex items-center space-x-3 mb-10">
+                <button class="uiverse">
+                    <div class="wrapper">
+                        <span>R</span>
+                        <div class="circle circle-12"></div>
+                        <div class="circle circle-11"></div>
+                        <div class="circle circle-10"></div>
+                        <div class="circle circle-9"></div>
+                        <div class="circle circle-8"></div>
+                        <div class="circle circle-7"></div>
+                        <div class="circle circle-6"></div>
+                        <div class="circle circle-5"></div>
+                        <div class="circle circle-4"></div>
+                        <div class="circle circle-3"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-1"></div>
+                    </div>
+                </button>
+                <span class="text-4xl font-black tracking-tighter text-white">Renew<span
+                        style="color: #FB923C;">X</span></span>
+            </a>
+
+            <div class="pt-10 border-t border-white/5 text-slate-500 font-bold text-sm">
+                <p>&copy; 2026 RenewX Marketplace. Your grid. Your future. Your story.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

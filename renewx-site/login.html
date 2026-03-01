@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RenewX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dashboard.js"></script>
+    <script>
+        // If already logged in, redirect to dashboard
+        window.addEventListener('DOMContentLoaded', () => {
+            const user = window.RenewX.getCurrentUser();
+            if (user) {
+                window.location.href = user.role + '.html';
+            }
+        });
+    </script>
+</head>
+
+<body class="bg-black min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+    <!-- Animated Background Glow -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+            style="background: radial-gradient(circle, rgba(251,146,60,0.18) 0%, rgba(194,65,12,0.08) 50%, transparent 70%);">
+        </div>
+    </div>
+
+    <div class="w-full max-w-md z-10">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-3 mb-12 justify-center group">
+            <button class="uiverse">
+                <div class="wrapper">
+                    <span>R</span>
+                    <div class="circle circle-12"></div>
+                    <div class="circle circle-11"></div>
+                    <div class="circle circle-10"></div>
+                    <div class="circle circle-9"></div>
+                    <div class="circle circle-8"></div>
+                    <div class="circle circle-7"></div>
+                    <div class="circle circle-6"></div>
+                    <div class="circle circle-5"></div>
+                    <div class="circle circle-4"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-1"></div>
+                </div>
+            </button>
+            <span class="text-3xl font-black text-white">RenewX</span>
+        </a>
+
+        <!-- New Login Form -->
+        <div class="max-w-md w-full form-container">
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Passkey</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Select Role</label>
+                    <select id="role" class="bg-black border-slate-700">
+                        <option value="producer">⚡ Producer</option>
+                        <option value="consumer">🔋 Consumer</option>
+                        <option value="investor">📈 Investor</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Login to the Movement &rarr;</button>
+            </form>
+        </div>
+        <p class="text-center text-slate-500 font-bold text-sm mt-8">
+            New to RenewX?
+            <a href="index.html#signup" class="font-black transition-colors hover:underline"
+                style="color: #FB923C;">Join
+                the movement →</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = e.target.querySelector('input[type="password"]').value;
+            const role = document.getElementById('role').value;
+
+            const submitBtn = e.target.querySelector('button');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Verifying Identity...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:5001/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Check if role matches (optional, but good for UX)
+                    if (data.user.role !== role) {
+                        alert(`Access Denied: You are registered as a ${data.user.role}, not a ${role}.`);
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                        return;
+                    }
+
+                    localStorage.setItem('renewx_token', data.token);
+                    localStorage.setItem('renewx_currentUser', JSON.stringify(data.user));
+                    window.location.href = data.user.role + '.html';
+                } else {
+                    alert(data.message || 'Login failed. Please check your credentials.');
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('Connection to the grid failed. Is the backend running?');
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

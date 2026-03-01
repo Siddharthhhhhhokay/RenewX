@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Dashboard - RenewX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Immediate Auth Check - redirect to login if not authenticated
+        if (!window.RenewX.checkAuth('investor')) {
+            // redirect handled inside
+        }
+    </script>
+</head>
+
+<body class="overflow-hidden flex h-screen bg-black">
+    <!-- Sidebar -->
+    <aside class="w-80 glass-premium m-6 rounded-[32px] flex flex-col p-8 custom-scrollbar border border-white/5">
+        <a href="index.html" class="flex items-center space-x-3 mb-12">
+            <button class="uiverse" style="width: 32px; height: 32px; font-size: 16px;">
+                <div class="wrapper">
+                    <span>R</span>
+                    <div class="circle circle-12" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-11" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-10" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-9" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-8" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-7" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-6" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-5" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-4" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-3" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-2" style="width: 15px; height: 15px;"></div>
+                    <div class="circle circle-1" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <span class="text-xl font-black text-white">RenewX</span>
+        </a>
+
+        <div class="space-y-2 flex-1">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-4">Menu</p>
+            <a href="investor.html"
+                class="flex items-center space-x-4 px-5 py-4 bg-amber-600 text-white rounded-2xl font-black shadow-lg shadow-amber-900/40">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+                <span>Portfolio</span>
+            </a>
+            <a href="#projectsSection"
+                onclick="document.getElementById('projectsSection').scrollIntoView({behavior:'smooth'})"
+                class="flex items-center space-x-4 px-5 py-4 text-slate-400 hover:bg-white/5 rounded-2xl font-black transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                <span>My Investments</span>
+            </a>
+            <a href="#marketSection"
+                onclick="document.getElementById('marketSection').scrollIntoView({behavior:'smooth'})"
+                class="flex items-center space-x-4 px-5 py-4 text-slate-400 hover:bg-white/5 rounded-2xl font-black transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span>Browse Projects</span>
+            </a>
+        </div>
+
+        <button onclick="window.RenewX.logout()"
+            class="flex items-center space-x-4 px-5 py-4 text-red-500 hover:bg-red-500/10 rounded-2xl font-black transition-all w-full text-left">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span>Logout</span>
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-12 custom-scrollbar">
+        <header class="flex justify-between items-center mb-12">
+            <div>
+                <h1 class="text-4xl font-black tracking-tight text-hero-gradient heading-glow">Investor Portfolio</h1>
+                <p class="text-slate-400 font-bold" id="welcomeText">Funding the green transition.</p>
+            </div>
+            <button onclick="openInvestModal()"
+                class="bg-amber-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg shadow-amber-900/40 hover:bg-amber-500 transition-all">
+                New Investment +
+            </button>
+        </header>
+
+        <!-- Stats -->
+        <div class="grid md:grid-cols-4 gap-6 mb-12 animate-entrance">
+            <div class="glass-premium rounded-3xl p-8 border-b-4 border-amber-500">
+                <p class="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-2">Total Invested</p>
+                <h3 class="text-3xl font-black text-white italic" id="statInvested">₹0</h3>
+            </div>
+            <div class="glass-premium rounded-3xl p-8 border-b-4 border-green-500">
+                <p class="text-[10px] font-black text-green-400 uppercase tracking-widest mb-2">Est. Returns</p>
+                <h3 class="text-3xl font-black text-white italic" id="statReturns">₹0</h3>
+            </div>
+            <div class="glass-premium rounded-3xl p-8 border-b-4 border-blue-500">
+                <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Active Projects</p>
+                <h3 class="text-3xl font-black text-white italic" id="statProjects">0</h3>
+            </div>
+            <div class="glass-premium rounded-3xl p-8 border-b-4 border-purple-500">
+                <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-2">CO₂ Impact</p>
+                <h3 class="text-3xl font-black text-white italic" id="statCO2">0 kg</h3>
+            </div>
+        </div>
+
+        <!-- My Investments -->
+        <section id="projectsSection" class="glass-premium rounded-[32px] p-10 mb-12 animate-entrance"
+            style="animation-delay: 0.1s;">
+            <h2 class="text-2xl font-black mb-8 tracking-tight text-premium-orange letter-spacing-tight">My Investments
+            </h2>
+            <div id="investmentsContainer" class="grid md:grid-cols-2 gap-6">
+                <!-- Investments injected here -->
+            </div>
+        </section>
+
+        <!-- Marketplace - Browse Active Projects to Invest In -->
+        <section id="marketSection" class="animate-entrance" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl font-black mb-2 tracking-tight text-premium-orange letter-spacing-tight">Browse Energy
+                Projects</h2>
+            <p class="text-slate-500 font-bold mb-8">Invest directly in active renewable listings on the grid.</p>
+            <div id="marketContainer" class="grid md:grid-cols-2 gap-6">
+                <!-- Market listings injected here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- INVEST MODAL -->
+    <div id="investModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-6">
+        <div class="glass-premium w-full max-w-lg rounded-[40px] p-10 border border-white/10">
+            <h2 class="text-3xl font-black text-white mb-2">New Investment</h2>
+            <p id="investDetails" class="text-slate-400 font-bold mb-8">Select a project to fund.</p>
+
+            <form id="investForm" class="space-y-6">
+                <input type="hidden" id="investListingId">
+                <div>
+                    <label
+                        class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Project</label>
+                    <select id="investProject"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold outline-none focus:border-amber-500 transition-all">
+                        <!-- options injected dynamically -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Investment
+                        Amount (₹)</label>
+                    <input type="number" id="investAmount" required min="1000" step="1000"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold outline-none focus:border-amber-500 transition-all"
+                        placeholder="50000">
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-slate-400 font-bold">Estimated Annual ROI:</span>
+                        <span class="text-green-400 font-black">12%</span>
+                    </div>
+                    <div class="flex justify-between pt-4 border-t border-white/10">
+                        <span class="text-white font-bold">Projected Return (1yr):</span>
+                        <span id="projectedReturn" class="text-2xl font-black text-amber-500">₹0</span>
+                    </div>
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button type="button" onclick="closeInvestModal()"
+                        class="flex-1 py-4 rounded-2xl font-black text-slate-400 hover:bg-white/5 transition-all">Cancel</button>
+                    <button type="submit"
+                        class="flex-1 bg-amber-600 text-white py-4 rounded-2xl font-black shadow-lg shadow-amber-900/40 hover:bg-amber-500 transition-all">Confirm
+                        Investment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+
+        async function openInvestModal(listingId = null) {
+            const listings = await window.RenewX.getListings();
+            const select = document.getElementById('investProject');
+            select.innerHTML = listings.length
+                ? listings.map(l => `<option value="${l._id}">${l.energyType} – ${l.location} (${l.unitsAvailable} kWh @ ${window.RenewX.formatCurrency(l.pricePerUnit)}/kWh)</option>`).join('')
+                : '<option value="">No active projects available</option>';
+
+            if (listingId) select.value = listingId;
+            document.getElementById('investAmount').value = '';
+            document.getElementById('projectedReturn').innerText = '₹0';
+            document.getElementById('investModal').classList.remove('hidden');
+        }
+
+        function closeInvestModal() {
+            document.getElementById('investModal').classList.add('hidden');
+        }
+
+        document.getElementById('investAmount').addEventListener('input', e => {
+            const amt = parseFloat(e.target.value) || 0;
+            const returns = amt * 0.12;
+            document.getElementById('projectedReturn').innerText = window.RenewX.formatCurrency(amt + returns);
+        });
+
+        const user = window.RenewX.getCurrentUser();
+        document.getElementById('welcomeText').innerText = `Logged in as: ${user.email}`;
+
+        document.getElementById('investForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const listingId = document.getElementById('investProject').value;
+            const amount = parseFloat(document.getElementById('investAmount').value);
+
+            if (!listingId) { alert('Please select a project.'); return; }
+            if (!amount || amount < 1000) { alert('Minimum investment is ₹1,000.'); return; }
+
+            const btn = e.target.querySelector('button[type="submit"]');
+            const orig = btn.innerText;
+            btn.innerText = 'Processing...';
+            btn.disabled = true;
+
+            const res = await window.RenewX.createInvestment(listingId, amount);
+
+            if (res.success) {
+                closeInvestModal();
+                await renderDashboard();
+                alert(`Investment of ${window.RenewX.formatCurrency(amount)} confirmed! 🎉`);
+            } else {
+                alert(res.message || 'Error recording investment.');
+            }
+            btn.innerText = orig;
+            btn.disabled = false;
+        });
+
+        async function renderDashboard() {
+            const invResult = await window.RenewX.getMyInvestments();
+            const myInvestments = invResult.investments || [];
+            const listings = await window.RenewX.getListings();
+
+            // Stats
+            const stats = invResult.stats || { totalInvested: 0, totalReturns: 0 };
+
+            document.getElementById('statInvested').innerText = window.RenewX.formatCurrency(stats.totalInvested);
+            document.getElementById('statReturns').innerText = window.RenewX.formatCurrency(stats.totalReturns);
+            document.getElementById('statProjects').innerText = myInvestments.length + ' Live';
+            document.getElementById('statCO2').innerText = window.RenewX.calculateCO2(myInvestments.length * 500);
+
+            // My Investments
+            const container = document.getElementById('investmentsContainer');
+            container.innerHTML = myInvestments.length ? '' : '<p class="text-slate-500 font-bold p-6">No investments yet. Browse projects below.</p>';
+            myInvestments.forEach(inv => {
+                const div = document.createElement('div');
+                div.className = 'glass-premium p-8 rounded-[32px] border border-white/5';
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="h-12 w-12 bg-amber-500/10 rounded-2xl flex items-center justify-center text-amber-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-[10px] font-black border border-amber-500/20">${inv.status}</span>
+                            <button onclick="removeInvestment('${inv._id}')" class="p-1.5 hover:bg-red-500/10 rounded-lg text-slate-500 hover:text-red-400 transition-all" title="Remove">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-1">${inv.energyType} Energy Project</h3>
+                    <p class="text-xs font-bold text-slate-400 mb-6 uppercase tracking-widest">${inv.location} • ${new Date(inv.createdAt).toLocaleDateString()}</p>
+                    <div class="flex justify-between items-end border-t border-white/10 pt-6">
+                        <div>
+                            <p class="text-[10px] font-black text-slate-500 uppercase">Invested</p>
+                            <p class="text-2xl font-black text-white">${window.RenewX.formatCurrency(inv.amount)}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] font-black text-slate-500 uppercase">Projected (1yr)</p>
+                            <p class="text-xl font-black text-amber-400">+${window.RenewX.formatCurrency(inv.projectedReturn)}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            // Marketplace - Browse Projects
+            const marketContainer = document.getElementById('marketContainer');
+            marketContainer.innerHTML = listings.length ? '' : '<p class="text-slate-500 font-bold p-6">No active listings available to invest in.</p>';
+            listings.forEach(l => {
+                const marketValue = l.unitsAvailable * l.pricePerUnit;
+                const div = document.createElement('div');
+                div.className = 'glass-premium p-8 rounded-[32px] border border-white/5 flex flex-col justify-between';
+                div.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="h-12 w-12 bg-amber-500/10 rounded-2xl flex items-center justify-center text-amber-500">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <span class="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full text-[10px] font-black border border-amber-500/20">ACTIVE</span>
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-1">${l.energyType} Power Project</h3>
+                        <p class="text-xs font-bold text-slate-500 mb-4 uppercase tracking-widest">${l.location} • by ${l.producer?.name || 'Unknown'}</p>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white/5 rounded-xl p-3">
+                                <p class="text-[10px] font-black text-slate-500 uppercase">Market Value</p>
+                                <p class="font-black text-white">${window.RenewX.formatCurrency(marketValue)}</p>
+                            </div>
+                            <div class="bg-white/5 rounded-xl p-3">
+                                <p class="text-[10px] font-black text-slate-500 uppercase">Est. ROI</p>
+                                <p class="font-black text-amber-400">12% / yr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openInvestModal('${l._id}')" class="w-full bg-amber-600 text-white py-3 rounded-xl font-black text-sm hover:bg-amber-500 transition-all">
+                        Invest in this Project →
+                    </button>
+                `;
+                marketContainer.appendChild(div);
+            });
+        }
+
+        async function removeInvestment(id) {
+            if (!confirm('Remove this investment record?')) return;
+            const res = await window.RenewX.deleteInvestment(id);
+            if (res.success) await renderDashboard();
+            else alert(res.message || 'Error removing investment.');
+        }
+
+        renderDashboard();
+    </script>
+
+    renderDashboard();
+    </script>
+</body>
+
+</html>
